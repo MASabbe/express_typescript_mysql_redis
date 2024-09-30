@@ -9,6 +9,7 @@ import passport from 'passport';
 import strategies from './passport';
 import {logs} from './vars';
 import routes from '../api/routes/v1/index';
+import error from '../api/middlewares/error';
 
 const app = express();
 // request logging. dev: console | production: file
@@ -32,5 +33,11 @@ passport.use('facebook', strategies.facebook);
 passport.use('google', strategies.google);
 // mount api v1 events
 app.use('/v1', routes);
+// if error is not an instanceOf ApiError, convert it.
+app.use(error.converter);
+// catch 404 and forward to error handler
+app.use(error.notFound);
+// error handler, send stacktrace only during development
+app.use(error.handler);
 
 export default app;

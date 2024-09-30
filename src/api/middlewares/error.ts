@@ -2,68 +2,62 @@ import httpStatus from 'http-status';
 import expressValidation from 'express-validation';
 import ApiError from '../errors/api-error';
 import {env} from '../../config/vars';
-/**
- * Handles errors in the API.
- *
- * @param {Error} err - The error object.
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- * @param {Function} next - The next middleware function.
- * @return {void} The function does not return a value.
- */
-const handler = (err, req, res, next) => {
-    const response = {
+import {Request, Response, NextFunction} from "express";
+
+const handler = (err: ApiError, req: Request, res: Response, next: NextFunction): void => {
+    const response: {
+        code: number,
+        message: string,
+        errors: Array<{param: string, msg: string}>,
+        isPublic: boolean,
+        stack?: string
+    } = {
         code: err.code,
         message: err.message || httpStatus[err.status],
         errors: err.errors,
         isPublic: err.isPublic,
-        stack: err.stack,
     };
-    if (env === 'production') {
-        delete response.stack;
-    } else {
-        console.log(err);
-    }
     res.status(err.status);
     res.json(response);
 };
-/**
- * Converts an error object into an API error object and passes it to the error handler.
- *
- * @param {Error} err - The error object.
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- * @param {Function} next - The next function.
- * @return {Function} - The error handler function.
- */
-const converter = function(err, req, res, next) {
-    let convertedError = err;
+const converter = (err: Error, req: Request, res: Response, next: NextFunction): void => {
+    let convertedError: Error | ApiError = err;
     if (err instanceof expressValidation.ValidationError) {
         const invalids = err.details.query || err.details.params || err.details.body;
-        const errors = invalids.reduce((a, b)=>[...a, b], []);
+        const errors = invalids.reduce((a, b) => [...a, b], []);
         convertedError = new ApiError({
             message: 'Validation Error',
             errors: errors,
             code: err.statusCode,
             status: err.statusCode,
             isPublic: true,
-            stack: err.stack,
         });
     } else if (!(err instanceof ApiError)) {
         convertedError = new ApiError({
             message: env === 'production' ? 'Internal Server Error': err.message,
-            errors: err.error,
+            errors: err,
             code: httpStatus.INTERNAL_SERVER_ERROR,
             status: httpStatus.INTERNAL_SERVER_ERROR,
-            stack: err.stack,
+            isPublic: false,
         });
     }
-    return handler(convertedError, req, res, next);
+    return handler(convertedError as ApiError, req, res, next);
 };
-const notFound = function(req, res, next) {
+/**
+ * Handles 404 errors.
+ *
+ * @param {express.Request} req - The request object.
+ * @param {express.Response} res - The response object.
+ * @param {express.NextFunction} next - The next middleware function.
+ * @return {void} The function does not return a value.
+ */
+const notFound = (req: Request, res: Response, next: NextFunction): void => {
     const err = new ApiError({
         message: 'Not found',
+        errors: [],
+        code: httpStatus.NOT_FOUND,
         status: httpStatus.NOT_FOUND,
+        isPublic: true,
     });
     return handler(err, req, res, next);
 };

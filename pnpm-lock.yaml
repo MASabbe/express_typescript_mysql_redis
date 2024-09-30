@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@types/passport-http-bearer':
-        specifier: ^1.0.41
-        version: 1.0.41
       axios:
         specifier: ^1.7.7
         version: 1.7.7
@@ -29,12 +26,21 @@ importers:
       express:
         specifier: ^4.19.2
         version: 4.19.2
+      express-validation:
+        specifier: ^4.1.1
+        version: 4.1.1
       helmet:
         specifier: ^7.1.0
         version: 7.1.0
       http-status:
         specifier: ^1.7.4
         version: 1.7.4
+      joi:
+        specifier: ^17.13.3
+        version: 17.13.3
+      joi-phone-number:
+        specifier: ^5.1.1
+        version: 5.1.1
       method-override:
         specifier: ^3.0.0
         version: 3.0.0
@@ -75,6 +81,9 @@ importers:
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
+      '@types/joi-phone-number':
+        specifier: ^5.0.8
+        version: 5.0.8
       '@types/method-override':
         specifier: ^0.0.35
         version: 0.0.35
@@ -87,6 +96,9 @@ importers:
       '@types/passport':
         specifier: ^1.0.16
         version: 1.0.16
+      '@types/passport-http-bearer':
+        specifier: ^1.0.41
+        version: 1.0.41
       '@types/passport-jwt':
         specifier: ^4.0.1
         version: 4.0.1
@@ -155,6 +167,12 @@ packages:
     resolution: {integrity: sha512-BsWiH1yFGjXXS2yvrf5LyuoSIIbPrGUWob917o+BTKuZ7qJdxX8aJLRxs1fS9n6r7vESrq1OUqb68dANcFXuQQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
+  '@hapi/hoek@9.3.0':
+    resolution: {integrity: sha512-/c6rf4UJlmHlC9b5BaNvzAcFv7HZ2QHaV0D4/HNlBdvFnvQq8RI4kYdhyPCl7Xj+oWvTWQ8ujhqS53LIgAe6KQ==}
+
+  '@hapi/topo@5.1.0':
+    resolution: {integrity: sha512-foQZKJig7Ob0BMAYBfcJk8d77QtOe7Wo4ox7ff1lQYoNNAb6jwcY1ncdoy2e9wQZzvNy7ODZCYJkK8kzmcAnAg==}
+
   '@humanwhocodes/module-importer@1.0.1':
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
     engines: {node: '>=12.22'}
@@ -218,6 +236,15 @@ packages:
     peerDependencies:
       '@redis/client': ^1.0.0
 
+  '@sideway/address@4.1.5':
+    resolution: {integrity: sha512-IqO/DUQHUkPeixNQ8n0JA6102hT9CmaljNTPmQ1u8MEhBo/R4Q8eKLN/vGZxuebwOroDB4cbpjheD4+/sKFK4Q==}
+
+  '@sideway/formula@3.0.1':
+    resolution: {integrity: sha512-/poHZJJVjx3L+zVD6g9KgHfYnb443oi7wLu/XKojDviHy6HOEOA6z1Trk5aR1dGcmPenJEgb2sK2I80LeS3MIg==}
+
+  '@sideway/pinpoint@2.0.0':
+    resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
+
   '@tsconfig/node10@1.0.11':
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}
 
@@ -257,11 +284,17 @@ packages:
   '@types/express@4.17.21':
     resolution: {integrity: sha512-ejlPM315qwLpaQlQDTjPdsUFSc6ZsP4AN6AlWnogPjQ7CVi7PYF3YVz+CY3jE2pwYf7E/7HlDAN0rV2GxTG0HQ==}
 
+  '@types/hapi__joi@16.0.12':
+    resolution: {integrity: sha512-xJYifuz59jXdWY5JMS15uvA3ycS3nQYOGqoIIE0+fwQ0qI3/4CxBc6RHsOTp6wk9M0NWEdpcTl02lOQOKMifbQ==}
+
   '@types/http-assert@1.5.5':
     resolution: {integrity: sha512-4+tE/lwdAahgZT1g30Jkdm9PzFRde0xwxBNUyRsCitRvCQB90iuA2uJYdUnhnANRcqGXaWOGY4FEoxeElNAK2g==}
 
   '@types/http-errors@2.0.4':
     resolution: {integrity: sha512-D0CFMMtydbJAegzOyHjtiKPLlvnm3iTZyZRSZoLq2mRhDdmLfIWOCYPfQJ4cu2erKghU++QvjcUjp/5h7hESpA==}
+
+  '@types/joi-phone-number@5.0.8':
+    resolution: {integrity: sha512-QK94pyC2DbSh10JIIsRhyJ6zAyA7MNXmSCCFjMsQOfceKabJWDdll4L3NYOp3NsX3yuU0KaxbbIPMxYcBalAcA==}
 
   '@types/jsonwebtoken@9.0.6':
     resolution: {integrity: sha512-/5hndP5dCjloafCXns6SZyESp3Ldq7YjH3zwzwczYnjxIT0Fqzk5ROSYVGfFyczIue7IUEj8hkvLbPoLQ18vQw==}
@@ -678,6 +711,9 @@ packages:
     resolution: {integrity: sha512-aIL5Fx7mawVa300al2BnEE4iNvo1qETxLrPI/o05L7z6go7fCw1J6EQmbK4FmJ2AS7kgVF/KEZWufBfdClMcPg==}
     engines: {node: '>= 0.6'}
 
+  express-validation@4.1.1:
+    resolution: {integrity: sha512-g4DDvEIFizhPMqauhUE4oepfkoz6oU0YE/CGCsYJaHLWsHnZSnLwVMMY15oF/oGaepvc7b6EoBtQ0c4ism4Qag==}
+
   express@4.19.2:
     resolution: {integrity: sha512-5T6nhjsT+EOMzuck8JjBHARTHfMht0POzlA60WV2pMD3gyXw2LZnZ+ueGdNxG+0calOJcWKbpFcuzLZ91YWq9Q==}
     engines: {node: '>= 0.10.0'}
@@ -775,6 +811,10 @@ packages:
     resolution: {integrity: sha512-SmSKyLLKFbSr6rptvP8izbyxJL4ILwqO9Jg23UA0sDlGlu58V59D1//I3vlc0KJphVdUR7vMjHIplYnzBxorQA==}
     engines: {node: '>=18'}
 
+  google-libphonenumber@3.2.27:
+    resolution: {integrity: sha512-et3QlrfWemNPhyUfXZmJG8TfzitfAN71ygNI15+B35zNge/7vyZxkpDsc13oninkf8RAtN2kNEzvMr4L1n3vfQ==}
+    engines: {node: '>=0.10'}
+
   gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
 
@@ -863,6 +903,13 @@ packages:
 
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+
+  joi-phone-number@5.1.1:
+    resolution: {integrity: sha512-sCrH/GP5ShkPTW8jVQXxAVxvgHZ1CQTmAvIp0JGEUaGsPAY5l+ByapIwNJlVsY7LPtCDZW996o5R66+W0nk9qQ==}
+    engines: {node: '>=12.16.0'}
+
+  joi@17.13.3:
+    resolution: {integrity: sha512-otDA4ldcIx+ZXsKHWmp0YizCweVRZG96J10b0FevjfuncLO1oX59THoAmHkNubYJ+9gWsYsp5k8v4ib6oDv1fA==}
 
   js-yaml@4.1.0:
     resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
@@ -1395,6 +1442,12 @@ snapshots:
 
   '@eslint/object-schema@2.1.4': {}
 
+  '@hapi/hoek@9.3.0': {}
+
+  '@hapi/topo@5.1.0':
+    dependencies:
+      '@hapi/hoek': 9.3.0
+
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.3.0': {}
@@ -1448,6 +1501,14 @@ snapshots:
     dependencies:
       '@redis/client': 1.6.0
 
+  '@sideway/address@4.1.5':
+    dependencies:
+      '@hapi/hoek': 9.3.0
+
+  '@sideway/formula@3.0.1': {}
+
+  '@sideway/pinpoint@2.0.0': {}
+
   '@tsconfig/node10@1.0.11': {}
 
   '@tsconfig/node12@1.0.11': {}
@@ -1500,9 +1561,16 @@ snapshots:
       '@types/qs': 6.9.15
       '@types/serve-static': 1.15.7
 
+  '@types/hapi__joi@16.0.12': {}
+
   '@types/http-assert@1.5.5': {}
 
   '@types/http-errors@2.0.4': {}
+
+  '@types/joi-phone-number@5.0.8':
+    dependencies:
+      '@types/node': 22.5.4
+      joi: 17.13.3
 
   '@types/jsonwebtoken@9.0.6':
     dependencies:
@@ -1979,6 +2047,12 @@ snapshots:
 
   etag@1.8.1: {}
 
+  express-validation@4.1.1:
+    dependencies:
+      '@types/express': 4.17.21
+      '@types/hapi__joi': 16.0.12
+      joi: 17.13.3
+
   express@4.19.2:
     dependencies:
       accepts: 1.3.8
@@ -2105,6 +2179,8 @@ snapshots:
 
   globals@15.9.0: {}
 
+  google-libphonenumber@3.2.27: {}
+
   gopd@1.0.1:
     dependencies:
       get-intrinsic: 1.2.4
@@ -2171,6 +2247,18 @@ snapshots:
   isarray@1.0.0: {}
 
   isexe@2.0.0: {}
+
+  joi-phone-number@5.1.1:
+    dependencies:
+      google-libphonenumber: 3.2.27
+
+  joi@17.13.3:
+    dependencies:
+      '@hapi/hoek': 9.3.0
+      '@hapi/topo': 5.1.0
+      '@sideway/address': 4.1.5
+      '@sideway/formula': 3.0.1
+      '@sideway/pinpoint': 2.0.0
 
   js-yaml@4.1.0:
     dependencies:
